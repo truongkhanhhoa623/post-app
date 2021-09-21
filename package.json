@@ -1,0 +1,29 @@
+{
+  "name": "post-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/truongkhanhhoa623/post-app.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "khanh-hoa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/truongkhanhhoa623/post-app/issues"
+  },
+  "homepage": "https://github.com/truongkhanhhoa623/post-app#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0"
+  }
+}
