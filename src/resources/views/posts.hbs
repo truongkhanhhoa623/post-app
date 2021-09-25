@@ -7,15 +7,21 @@
         {{#each posts}}
           <div class="post">
             <div class="row">
-              <div class="col col-lg-6">
-                <h5 class="post__auther">Auther</h5>
+              <div class="col col-lg-8">
+                  <div class="post__head">
+                    <h5>Auther</h5>
+                    <p>{{ this.createdAt }}</p>
+                  </div>
+                   <h3 class="post__title">{{ this.title }}</h3>
+                    <p class="post__description">{{ this.content }}</p>
               </div>
-              <div class="col col-lg-6">
-                <p class="post__created">{{ this.createdAt }}</p>
+              <div class="col col-lg-4">
+                  <div class="post__image">
+                      <img src="{{ this.image }}" alt="Image Javascript"/>
+                  </div>
               </div>
             </div>
-            <h3 class="post__title">{{ this.title }}</h3>
-            <p class="post__descript">{{ this.content }}</p>
+           
           </div>
         {{/each}}
 
