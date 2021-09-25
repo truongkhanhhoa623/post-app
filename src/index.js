@@ -8,7 +8,7 @@ const port = 3000;
 const db = require("./config/db")
 
 db.connect()
-
+app.use(express.static(path.join(__dirname, "public", "")))
 app.engine(
   "hbs",
   handlebars({

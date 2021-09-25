@@ -1,0 +1,26 @@
+<section class="page-post">
+  <div class="container">
+    <div class="row">
+      <div class="col col-lg-12">
+        <h2 class="page-post__title">Page posts</h2>
+
+        {{#each posts}}
+          <div class="post">
+            <div class="row">
+              <div class="col col-lg-6">
+                <h5 class="post__auther">Auther</h5>
+              </div>
+              <div class="col col-lg-6">
+                <p class="post__created">{{ this.createdAt }}</p>
+              </div>
+            </div>
+            <h3 class="post__title">{{ this.title }}</h3>
+            <p class="post__descript">{{ this.content }}</p>
+          </div>
+        {{/each}}
+
+      </div>
+    </div>
+  </div>
+
+</section>
