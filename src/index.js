@@ -1,13 +1,13 @@
 const express = require("express")
 const morgan = require("morgan")
 const handlebars = require("express-handlebars")
-const methodOverride = require("method-override")
-const path = require("path")
+const methodOverride = require("method-override") 
 const app = express()
 const route = require("./routes")
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 const db = require("./config/db")
 const sortMiddleware = require("./middlewares/sortMiddleware")
+const path = require('path')
 
 db.connect()
 app.use(express.static(path.join(__dirname, "public", "")))
