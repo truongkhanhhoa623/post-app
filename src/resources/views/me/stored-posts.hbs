@@ -1,0 +1,85 @@
+<section class="stored-page">
+  <div class="container mt-5">
+    <div class="stored-content">
+      <h3>Danh sách các bài viết</h3>
+      <table class="table table-striped mt-4">
+        <thead>
+          <tr>
+            <th scope="col">STT</th>
+            <th scope="col">Tên bài viết 
+               {{{sortable "name" _sort}}}
+                </th>
+            <th scope="col">Chủ đề
+            </th>
+            <th scope="col">Ngày tạo
+               {{{sortable "date" _sort}}}
+            </th>
+            <th scope="col" colspan="2">Ngày sửa</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          {{#each posts}}
+            <tr>
+              <th scope="row">{{sum @index 1}}</th>
+              <td>{{this.title}}</td>
+              <td>Chủ đề</td>
+              <td>{{this.createdAt}}</td>
+              <td>{{this.updatedAt}}</td>
+              <td>
+                <a href="/posts/{{this._id}}/edit" class="">Sửa</a>
+                <a
+                  href="/posts/{{this._id}}/delete"
+                  id="delete"
+                  data-toggle="modal"
+                  data-id= {{this._id}}
+                  data-target="#confirmModalDelete"
+                >Xóa</a>
+              </td>
+            </tr>
+          {{/each}}
+
+        </tbody>
+      </table>
+      <form id="form-delete-post" method="POST"></form>
+      <!-- Modal -->
+      <div class="modal fade" id="confirmModalDelete" tabindex="-1" role="dialog" aria-labelledby="confirmModalDeleteLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="confirmModalDeleteLabel">Xóa bài viết?</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Bạn có chắc chắn muốn xóa bài viết
+            </div>
+            <div class="modal-footer">
+              <button id="btn-delete" type="button" class="btn btn-danger">Xóa bài viết</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+            </div>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script type="text/javascript">
+    let idDelete = null
+    let btnDeletePost = document.querySelector('#btn-delete')
+    let formDeletePost = document.querySelector('#form-delete-post')
+    document.addEventListener('DOMContentLoaded', function(){
+        $('#confirmModalDelete').on('show.bs.modal', function (e) {
+            // do something...
+            let button = $(e.relatedTarget)
+            idDelete = button.data('id')
+        }) 
+        btnDeletePost.addEventListener('click', function(e){
+            formDeletePost.action = `/posts/${idDelete}/?_method=DELETE`
+            formDeletePost.submit()
+            console.log("success")
+        })
+  })
+
+</script>
